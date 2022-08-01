@@ -1,4 +1,5 @@
-FROM openjdk:8
+FROM openjdk:8-jdk-buster
 EXPOSE 8080
-ADD target/docker-jenkins-integration.jar docker-jenkins-integration.jar
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} docker-jenkins-integration.jar
 ENTRYPOINT ["java", "-jar", "/docker-jenkins-integration.jar"]
